@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Ditmas Park - Brooklyn's Victorian Gem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-menu {
+            background: rgba(52, 73, 94, 0.9);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .section:hover h2::after {
+            width: 100px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(116, 185, 255, 0.3);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .fun-fact {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fun-fact::before {
+            content: '💡';
+            font-size: 2rem;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid #3498db;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1rem;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .year {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 184, 148, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-menu a { margin: 0 1rem; }
+            .container { margin: 10px; border-radius: 15px; }
+            main { padding: 2rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ditmas Park</h1>
+            <p class="subtitle">Brooklyn's Best-Kept Victorian Secret</p>
+        </header>
+
+        <nav class="nav-menu">
+            <a href="#history">History</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#culture">Culture</a>
+            <a href="#visit">Visit</a>
+        </nav>
+
+        <main>
+            <section id="history" class="section">
+                <h2>Rich History</h2>
+                <div class="highlight-box">
+                    <h3>From Farmland to Neighborhood Gem</h3>
+                    <p>Ditmas Park stands as one of Brooklyn's most architecturally significant neighborhoods, representing a unique chapter in New York City's suburban development story.</p>
+                </div>
+
+                <p>Named after Johannes Ditmas, a Dutch settler whose family farmed the area for generations, Ditmas Park transformed from rural farmland into an elegant residential neighborhood in the early 20th century. The area's development began in earnest around 1902 when real estate developer Lewis Pounds purchased large tracts of the former Ditmas farm.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">1600s-1800s</div>
+                        <p>Dutch farming community established by the Ditmas family</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">1902-1920</div>
+                        <p>Major residential development begins with Victorian and Colonial Revival homes</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">1970s</div>
+                        <p>Historic district designation protects architectural integrity</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2000s-Present</div>
+                        <p>Renaissance as a diverse, family-friendly community</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture" class="section">
+                <h2>Stunning Architecture</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Victorian Grandeur</h3>
+                        <p>The neighborhood boasts one of NYC's largest collections of freestanding Victorian homes, featuring elaborate wooden trim, wraparound porches, and distinctive tower elements.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Colonial Revival</h3>
+                        <p>Elegant Colonial Revival houses showcase symmetrical facades, dormer windows, and classical details that reflect early 20th-century American architectural preferences.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Craftsman Style</h3>
+                        <p>Beautiful Craftsman bungalows feature exposed beams, built-in furniture, and natural materials that emphasize handcrafted quality.</p>
+                    </div>
+                </div>
+
+                <div class="fun-fact">
+                    Did you know? Ditmas Park contains over 2,000 buildings, with approximately 95% dating from 1902 to 1920, making it one of the most architecturally cohesive neighborhoods in Brooklyn!
+                </div>
+            </section>
+
+            <section id="culture" class="section">
+                <h2>Vibrant Community Culture</h2>
+                <p>Today's Ditmas Park is a beautifully diverse community that celebrates both its historic charm and contemporary vibrancy. The neighborhood attracts families, artists, young professionals, and long-time residents who appreciate its unique character.</p>
+
+                <div class="highlight-box">
+                    <h3>A Melting Pot of Cultures</h3>
+                    <p>The community includes families from the Caribbean, South Asia, Latin America, and beyond, creating a rich cultural tapestry reflected in local businesses, restaurants, and community events.</p>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>Local Dining Scene</h3>
+                        <p>From authentic Caribbean cuisine to artisanal coffee shops, the neighborhood's restaurant scene reflects its diverse population and growing foodie culture.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Community Events</h3>
+                        <p>Regular street festivals, house tours, and neighborhood gatherings strengthen community bonds and celebrate the area's unique heritage.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Green Spaces</h3>
+                        <p>Tree-lined streets and proximity to Prospect Park provide residents with abundant opportunities for outdoor recreation and relaxation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="visit" class="section">
+                <h2>Plan Your Visit</h2>
+                <p>Whether you're interested in architecture, local culture, or simply exploring a unique New York neighborhood, Ditmas Park offers plenty to discover.</p>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>Getting There</h3>
+                        <p><strong>Subway:</strong> B, Q trains to Newkirk Plaza or Cortelyou Road stations<br>
+                        <strong>Location:</strong> Bounded by Coney Island Avenue, Ocean Avenue, Newkirk Avenue, and Foster Avenue</p>
+                    </div>
+                    <div class="card">
+                        <h3>Best Time to Visit</h3>
+                        <p>Spring through fall offers the best weather for walking tours. The annual Ditmas Park house tour (typically in September) provides special access to historic interiors.</p>
+                    </div>
+                    <div class="card">
+                        <h3>What to See</h3>
+                        <p>• Historic Victorian mansions on Marlborough Road<br>
+                        • Beautiful tree-canopied streets<br>
+                        • Cortelyou Road's diverse shopping and dining<br>
+                        • The neighborhood's many churches and community spaces</p>
+                    </div>
+                </div>
+
+                <div class="fun-fact">
+                    Walking tip: Start at the Cortelyou Road subway station and head down Marlborough Road or Argyle Road to see some of the neighborhood's most spectacular Victorian homes!
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="#history" class="cta-button">Explore Ditmas Park's Story</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Discover Ditmas Park - An educational resource celebrating Brooklyn's Victorian neighborhood</p>
+            <p>Learn more about New York City's historic neighborhoods and architectural heritage</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.borderLeft = '5px solid #e74c3c';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.borderLeft = '5px solid #3498db';
+            });
+        });
+
+        // Simple parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
