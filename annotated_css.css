@@ -1,0 +1,88 @@
+/* CONTAINER: Body element - base container for entire page */
+body {
+    /* STYLING RULE: Typography - sets font stack with fallbacks */
+    font-family: Arial, sans-serif;
+    
+    /* STYLING RULE: Layout - removes default browser margins */
+    margin: 0;
+    
+    /* STYLING RULE: Layout - removes default browser padding */
+    padding: 0;
+    
+    /* STYLING RULE: Visual - light gray background for page */
+    background-color: #f2f2f2;
+}
+
+/* CONTAINER: Header section styling */
+header {
+    /* STYLING RULE: Visual - green background color */
+    background-color: #4CAF50;
+    
+    /* STYLING RULE: Typography - white text color for contrast */
+    color: white;
+    
+    /* STYLING RULE: Layout - uniform padding on all sides */
+    padding: 20px;
+    
+    /* STYLING RULE: Layout - centers all header content */
+    text-align: center;
+}
+
+/* CONTENT: Navigation links within nav container */
+nav a {
+    /* STYLING RULE: Typography - white links to match header text */
+    color: white;
+    
+    /* STYLING RULE: Visual - removes default underline from links */
+    text-decoration: none;
+    
+    /* STYLING RULE: Layout - horizontal spacing between nav items */
+    margin: 0 10px;
+}
+
+/* CONTAINER: Main content area styling */
+main {
+    /* STYLING RULE: Layout - inner spacing for content breathing room */
+    padding: 20px;
+}
+
+/* CONTAINER: Individual content sections */
+section {
+    /* STYLING RULE: Visual - white background creates cards effect */
+    background-color: white;
+    
+    /* STYLING RULE: Layout - vertical spacing between sections */
+    margin-bottom: 20px;
+    
+    /* STYLING RULE: Layout - inner spacing for section content */
+    padding: 15px;
+    
+    /* STYLING RULE: Visual - rounded corners for modern appearance */
+    border-radius: 5px;
+}
+
+/* CONTAINER: Footer section styling */
+footer {
+    /* STYLING RULE: Visual - dark background for contrast */
+    background-color: #333;
+    
+    /* STYLING RULE: Typography - white text on dark background */
+    color: white;
+    
+    /* STYLING RULE: Layout - centers footer content */
+    text-align: center;
+    
+    /* STYLING RULE: Layout - minimal padding for compact footer */
+    padding: 10px;
+}
+
+/* 
+STYLING PATTERNS ANALYSIS:
+- Reset styles: margin/padding 0 on body removes browser defaults
+- Color scheme: Green header (#4CAF50), white content, dark footer (#333)
+- Layout system: Consistent padding creates visual hierarchy
+- Typography: Arial font stack ensures cross-platform compatibility
+- Visual effects: Border-radius and background colors create depth
+- Spacing: Margin and padding values create consistent rhythm
+- Accessibility: High contrast colors improve readability
+*/
